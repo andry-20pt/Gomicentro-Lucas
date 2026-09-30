@@ -1,30 +1,96 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GOMICENTRO LUCAS</title>
 <style>
 :root{--bg:#F4F4F5;--pri:#C81D25;--ink:#18181B;--mut:#71717A;--bd:#D4D4D8;--sel:#FBE1E1;--warn:#FDE68A;--dng:#FCA5A5;--cre:#DBEAFE;--abo:#DCFCE7}
-*{box-sizing:border-box}body{margin:0;font:14px 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
-#app{display:flex;height:100vh}#side{width:230px;background:#fff;border-top:4px solid var(--pri);display:flex;flex-direction:column;overflow:auto;flex-shrink:0}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:14px 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+#app{display:flex;height:100vh;height:100dvh}
+#side{width:230px;background:#fff;border-top:4px solid var(--pri);display:flex;flex-direction:column;overflow:auto;flex-shrink:0}
 .logo{text-align:center;padding:24px 0 14px;border-bottom:1px solid var(--bd);margin:0 24px 8px}.logo b{font-size:24px;display:block}.logo small{color:var(--pri);font-weight:700;letter-spacing:3px;font-size:9px}
 .nav{margin:2px 12px;padding:9px 10px;border-left:4px solid transparent;cursor:pointer;font-size:14px}.nav:hover{background:var(--bg)}.nav.on{background:var(--sel);color:var(--pri);font-weight:700;border-color:var(--pri)}
 .foot{margin-top:auto;padding:12px;border-top:1px solid var(--bd)}.foot small{color:var(--mut);display:block}
-#main{flex:1;padding:30px 36px;overflow:auto}h1{font-size:22px;margin:0}.sub{color:var(--mut);margin:2px 0 0;padding-bottom:14px;border-bottom:1px solid var(--bd);margin-bottom:18px}h2{font-size:15px;margin:0 0 8px}
+#main{flex:1;min-width:0;padding:30px 36px;overflow:auto}
+h1{font-size:22px;margin:0}.sub{color:var(--mut);margin:2px 0 0;padding-bottom:14px;border-bottom:1px solid var(--bd);margin-bottom:18px}h2{font-size:15px;margin:0 0 8px}
 .card{background:#fff;border:1px solid var(--bd);padding:16px 18px}.grid{display:grid;gap:12px}.g6{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .card .v{font-size:20px;font-weight:700;margin-top:6px}.clk{cursor:pointer}.clk:hover{background:var(--sel)}
-button{border:0;color:#fff;font:700 12px 'Segoe UI';padding:9px 14px;cursor:pointer;background:var(--mut)}button:hover{filter:brightness(.85)}
+button{border:0;color:#fff;font:700 12px 'Segoe UI',system-ui,sans-serif;padding:9px 14px;cursor:pointer;background:var(--mut)}button:hover{filter:brightness(.85)}
 .b1{background:var(--pri)}.b2{background:var(--ink)}.b3{background:#E11D2E}.bl{background:var(--dng);color:#E11D2E}.w{width:100%;margin-top:6px}
-input,select,textarea{font:inherit;padding:7px 8px;border:1px solid var(--bd);width:100%;background:#fff}input:focus,select:focus,textarea:focus{outline:1px solid var(--pri)}
+input,select,textarea{font:inherit;padding:7px 8px;border:1px solid var(--bd);width:100%;background:#fff;min-width:0}input:focus,select:focus,textarea:focus{outline:1px solid var(--pri)}
+input[type=checkbox]{width:auto}
 label{font-weight:700;font-size:12px;display:block;margin-top:8px}
 table{width:100%;border-collapse:collapse;background:#fff}th{background:var(--bg);color:var(--mut);text-align:center;padding:10px;font-size:13px;position:sticky;top:0}td{padding:10px;text-align:center;border-bottom:1px solid #eee}td.l,th.l{text-align:left}
 tr.r{cursor:pointer}tr.r:hover td{background:#fafafa}tr.sel td{background:var(--sel)!important;color:var(--pri)}tr.warn td{background:var(--warn)}tr.dng td{background:var(--dng)}tr.cre td{background:var(--cre)}tr.abo td{background:var(--abo)}
-.tw{max-height:62vh;overflow:auto;border:1px solid var(--bd)}.split{display:flex;gap:18px;align-items:flex-start}.split>.tw,.split>div:first-child{flex:1;min-width:0}.side{width:300px;flex-shrink:0}
+.tw{max-height:62vh;overflow:auto;border:1px solid var(--bd);-webkit-overflow-scrolling:touch}
+.split{display:flex;gap:18px;align-items:flex-start}.split>.tw,.split>div:first-child{flex:1;min-width:0}.side{width:300px;flex-shrink:0}
 .tabs button{background:#E4E4E7;color:var(--ink);font-size:13px}.tabs button.on{background:var(--pri);color:#fff}
 .pill{display:inline-block;padding:6px 12px;margin:0 4px 6px 0;background:#fff;border:1px solid var(--bd);cursor:pointer;font-weight:700;font-size:12px}.pill.on{background:var(--pri);color:#fff;border-color:var(--pri)}
 .tot{font-size:22px;font-weight:700;color:var(--pri);display:flex;justify-content:space-between;align-items:center;margin:8px 0}
-#modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:9}#modal.on{display:flex}#mb{background:var(--bg);border-top:4px solid var(--pri);padding:20px;max-width:760px;width:94%;max-height:92vh;overflow:auto}
+#modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:9}#modal.on{display:flex}
+#mb{background:var(--bg);border-top:4px solid var(--pri);padding:20px;max-width:760px;width:94%;max-height:92vh;max-height:92dvh;overflow:auto}
 pre{background:#fff;border:1px solid var(--ink);padding:12px;font:13px Consolas,monospace;margin:8px 0;overflow:auto}
 .row{display:flex;gap:8px}.row>*{flex:1}.err{color:#E11D2E;font-weight:700}.ok{color:#15803d;font-weight:700}
-#login{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:20}#login .card{width:330px;padding:32px;border-top:5px solid var(--pri)}
-@media print{#app,#login{display:none!important}#modal{position:static;background:none;display:block}#mb{border:0;padding:0}#mb button,.noprint{display:none!important}pre{border:0}}
-@media(max-width:800px){#app{flex-direction:column;height:auto}#side{width:auto;flex-direction:row;flex-wrap:wrap}.split{flex-direction:column}.side{width:100%}}
+#login{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:20;padding:16px;overflow:auto}
+#login .card{width:100%;max-width:330px;padding:32px;border-top:5px solid var(--pri)}
+
+/* ===== TABLET Y PANTALLAS MEDIANAS (901px a 1180px) ===== */
+@media(min-width:901px) and (max-width:1180px){
+ #side{width:200px}
+ .logo{margin:0 14px 8px}
+ .nav{margin:2px 8px;font-size:13px}
+ #main{padding:22px 22px}
+ .split{gap:14px}
+ .split>.side{width:310px!important}
+}
+
+/* ===== TABLET VERTICAL Y TELÉFONO (hasta 900px): menú arriba, todo en una columna ===== */
+@media(max-width:900px){
+ #app{flex-direction:column;height:auto;min-height:100vh}
+ #side{width:100%;flex-direction:row;align-items:center;overflow-x:auto;overflow-y:hidden;position:sticky;top:0;z-index:8;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ #side::-webkit-scrollbar{display:none}
+ .logo{flex:0 0 auto;margin:0 6px 0 8px;padding:6px 10px;border-bottom:0;border-right:1px solid var(--bd)}
+ .logo b{font-size:18px}
+ .nav{flex:0 0 auto;white-space:nowrap;margin:4px 2px;padding:10px 12px;border-left:0;border-bottom:3px solid transparent}
+ .nav.on{border-bottom-color:var(--pri)}
+ .foot{flex:0 0 auto;margin:0 0 0 auto;padding:6px 10px;border-top:0;border-left:1px solid var(--bd);display:flex;align-items:center;gap:10px;white-space:nowrap}
+ .foot button{width:auto;margin:0}
+ #main{overflow:visible;padding:18px 16px 32px}
+ .split{flex-direction:column;align-items:stretch;gap:14px}
+ .split>.tw,.split>div:first-child{flex:none;width:100%}
+ .split>.side,.side{width:100%!important;flex-shrink:1}
+ .tw{max-height:55vh}
+ .tw table{min-width:460px}
+ #mb table{min-width:420px}
+}
+
+/* ===== TELÉFONO (hasta 600px) ===== */
+@media(max-width:600px){
+ body{font-size:15px}
+ h1{font-size:19px}
+ .sub{font-size:13px;margin-bottom:14px}
+ #main{padding:14px 12px 28px}
+ .card{padding:14px}
+ .g6{grid-template-columns:repeat(2,1fr)}
+ .card .v{font-size:18px}
+ th,td{padding:9px 8px}
+ input,select,textarea{font-size:16px;padding:10px}
+ input[type=checkbox]{width:20px;height:20px;vertical-align:middle}
+ button{padding:12px 14px;font-size:13px;min-height:44px}
+ .row{flex-wrap:wrap}
+ .row>*{min-width:120px}
+ .tot{font-size:20px}
+ .tabs button{flex:1}
+ #modal{align-items:flex-end}
+ #mb{width:100%;max-width:100%;max-height:94vh;max-height:94dvh;padding:16px 14px}
+ pre{font-size:12px}
+ #login .card{padding:24px 20px}
+}
+
+/* ===== PANTALLAS GRANDES (más de 1500px): que el contenido no se estire demasiado ===== */
+@media(min-width:1500px){
+ #main{padding:32px 48px}
+}
+
+@media print{#app,#login{display:none!important}#modal{position:static;background:none;display:block}#mb{border:0;padding:0;max-height:none;width:auto}#mb button,.noprint{display:none!important}pre{border:0}}
 </style></head><body>
 <div id="login"><div class="card"><div style="text-align:center;margin-bottom:18px"><b style="font-size:26px;display:block">LUCAS</b><small style="color:var(--pri);font-weight:700;letter-spacing:4px">GOMICENTRO</small></div>
 <label>Usuario</label><input id="lu" value="admin"><label>Contraseña</label><input id="lp" type="password"><p id="le" class="err"></p><button class="b1 w" onclick="entrar()">ENTRAR</button></div></div>
