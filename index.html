@@ -58,7 +58,12 @@ pre{background:#fff;border:1px solid var(--ink);padding:12px;font:13px Consolas,
  .split>.tw,.split>div:first-child{flex:none;width:100%}
  .split>.side,.side{width:100%!important;flex-shrink:1}
  .tw{max-height:55vh}
- .tw table{min-width:460px}
+ .tw table:has(th:nth-child(5)){min-width:520px}
+ .tw table:has(th:nth-child(8)){min-width:700px}
+ .card[style*="display:flex"]{flex-wrap:wrap;gap:10px!important}
+ .card[style*="display:flex"] .tot{margin-left:0!important;width:100%}
+ .row{flex-wrap:wrap}
+ .row>*{min-width:130px}
  #mb table{min-width:420px}
 }
 
@@ -71,7 +76,9 @@ pre{background:#fff;border:1px solid var(--ink);padding:12px;font:13px Consolas,
  .card{padding:14px}
  .g6{grid-template-columns:repeat(2,1fr)}
  .card .v{font-size:18px}
- th,td{padding:9px 8px}
+ th,td{padding:8px 6px;font-size:13px}
+ .tw{max-height:46vh}
+ .nav{font-size:13px;padding:10px}
  input,select,textarea{font-size:16px;padding:10px}
  input[type=checkbox]{width:20px;height:20px;vertical-align:middle}
  button{padding:12px 14px;font-size:13px;min-height:44px}
